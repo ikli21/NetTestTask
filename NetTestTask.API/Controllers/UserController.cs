@@ -24,8 +24,8 @@ namespace NetTestTask.API.Controllers
             _logger = logger;
             _userService = userService;
         }
-
-        [HttpGet("{userId:int}")]
+        [HttpGet]
+        [Route("{userId:int}")]
         public IActionResult GetUser(int userId)
         {
             var user = _userService.GetUser(userId);
@@ -45,7 +45,8 @@ namespace NetTestTask.API.Controllers
             return Ok(userInfoModel);
 
         }
-        [HttpPut("{userId:int}")]
+        [HttpPut]
+        [Route("{userId:int}")]
         public IActionResult UpdateUser(int userId, [FromBody]UpdateUserModel updateUserModel)
         {
             var user = _userService.UpdateUser(userId, updateUserModel);
@@ -65,7 +66,8 @@ namespace NetTestTask.API.Controllers
             return Ok(userInfoModel);
 
         }
-        [HttpGet("users/{pageNum:int}")]
+        [HttpGet]
+        [Route("users/{pageNum:int}")]
         public IActionResult GetPageUsers(int pageNum)
         {
             var page = _userService.GetPageUsers(pageNum);
@@ -77,7 +79,8 @@ namespace NetTestTask.API.Controllers
             return Ok(page);
 
         }
-        [HttpPut("{userId:int}/executor/{taskId:int}")]
+        [HttpPut]
+        [Route("{userId:int}/executor/{taskId:int}")]
         public IActionResult SetTaskForExecutor(int userId, int taskId)
         {
 

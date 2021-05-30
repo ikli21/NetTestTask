@@ -26,8 +26,8 @@ namespace NetTestTask.API.Controllers
             _logger = logger;
             _taskService = taskService;
         }
-
-        [HttpGet("{taskId:int}")]
+        [HttpGet]
+        [Route("{taskId:int}")]
         public IActionResult GetTask(int taskId)
         {
             var taskInfoModel = _taskService.GetTask(taskId);
@@ -39,7 +39,8 @@ namespace NetTestTask.API.Controllers
             return Ok(taskInfoModel);
 
         }
-        [HttpPut("{taskId:int}")]
+        [HttpPut]
+        [Route("{taskId:int}")]
         public IActionResult UpdateTask(int taskId, [FromBody]UpdateTaskModel updateTaskModel)
         {
             var task = _taskService.UpdateTask(taskId, updateTaskModel);
@@ -59,7 +60,8 @@ namespace NetTestTask.API.Controllers
             return Ok(taskInfoModel);
 
         }
-        [HttpGet("executor/{userId:int}/{pageNum:int}")]
+        [HttpGet]
+        [Route("executor/{userId:int}/{pageNum:int}")]
         public IActionResult GetPageTasksExecutor(int pageNum, int userId)
         {
             var page = _taskService.GetPageTasksExecutor(pageNum, userId);
@@ -71,8 +73,8 @@ namespace NetTestTask.API.Controllers
             return Ok(page);
 
         }
-
-        [HttpGet("manager/{userId:int}/{pageNum:int}")]
+        [HttpGet]
+        [Route("manager/{userId:int}/{pageNum:int}")]
         public IActionResult GetPageTasksManager(int pageNum, int userId)
         {
             var page = _taskService.GetPageTasksManager(pageNum, userId);
@@ -84,8 +86,8 @@ namespace NetTestTask.API.Controllers
             return Ok(page);
 
         }
-
-        [HttpPut("{taskId:int}/manager/{userId:int}")]
+        [HttpPut]
+        [Route("{taskId:int}/manager/{userId:int}")]
         public IActionResult SetTaskManager(int taskId, int userId)
         {
 
@@ -98,7 +100,8 @@ namespace NetTestTask.API.Controllers
             return Ok(task);
 
         }
-        [HttpPut("{taskId:int}/status/{status:int}")]
+        [HttpPut]
+        [Route("{taskId:int}/status/{status:int}")]
         public IActionResult UpdateTaskStatus(int taskId, int status)
         {
 
