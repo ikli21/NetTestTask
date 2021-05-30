@@ -48,8 +48,8 @@ namespace NetTestTask.API
         private void ConfiguratesSwagger(IServiceCollection services)
         {
             services.AddSwaggerGen(c=> {
-                c.SwaggerDoc("test_version", new OpenApiInfo { Title = "NetTestTaskAPI", Version = "v1" });
-                //c.ResolveConflictingActions(apiDescriptions=>apiDescriptions.First());
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "NetTestTaskAPI", Version = "v1" });
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
                 //var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 //c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
